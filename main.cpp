@@ -1,4 +1,6 @@
 #include "gameoflife.h"
+#include "customGraphicsView.h"
+
 
 #include <QApplication>
 

@@ -13,6 +13,7 @@ SOURCES += \
     gameoflife.cpp
 
 HEADERS += \
+    customGraphicsView.h \
     gameoflife.h
 
 FORMS += \

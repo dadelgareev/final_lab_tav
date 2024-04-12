@@ -8,6 +8,7 @@
 #include <random>
 #include <QTimer>
 #include <QMouseEvent>
+#include <QGraphicsView>
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -52,6 +53,7 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+    void addCell(int x, int y);
 
 private:
     Ui::GameofLife *ui;

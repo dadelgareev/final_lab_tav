@@ -1,5 +1,6 @@
 #include "gameoflife.h"
 #include "ui_gameoflife.h"
+#include "customGraphicsView.h"
 
 #include <QApplication>
 
@@ -21,11 +22,14 @@ GameofLife::GameofLife(QWidget *parent)
     // Создаем сцену для отображения клеток
     scene = new QGraphicsScene();
 
+    ui->customGraphicsView->setScene(scene);
+
+
     gameRunning = true;
     addingCellMode = false;
 
-    // Устанавливаем сцену в QGraphicsView
-    ui->graphicsView->setScene(scene);
+
+    connect(ui->customGraphicsView, &CustomGraphicsView::mouseClicked, this, &GameofLife::addCell);
 
     // Создаем таймер для регулярного обновления игры
     timer = new QTimer(this);
@@ -124,6 +128,22 @@ int GameofLife::countAliveNeighbors(int row, int col) {
         }
     }
     return aliveNeighbors;
+}
+void GameofLife::addCell(int x, int y) {
+    if (addingCellMode) {
+        // Определяем индексы строки и столбца клетки на основе координат x и y
+        int row = y / CELL_SIZE;
+        int col = x / CELL_SIZE;
+
+        // Проверяем, что индексы находятся в пределах массива клеток
+        if (row >= 0 && row < cells.size() && col >= 0 && col < cells[0].size()) {
+            // Устанавливаем состояние клетки в живое
+            cells[row][col].setAlive(true);
+
+            // Перерисовываем клетки на сцене
+            drawCells();
+        }
+    }
 }
 
 void GameofLife::on_pushButton_clicked()

@@ -45,10 +45,10 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="CustomGraphicsView" name="customGraphicsView">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>40</x>
       <y>20</y>
       <width>811</width>
       <height>611</height>
@@ -181,6 +181,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomGraphicsView</class>
+   <extends>QGraphicsView</extends>
+   <header>customgraphicsview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
